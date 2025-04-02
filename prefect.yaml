@@ -26,7 +26,7 @@ deployments:
     timezone: "Asia/Kolkata"
     active: true
   flow_name: bankflow
-  entrypoint: bankapp.py
+  entrypoint: bankapp.py:bankflow
   parameters: {}
   work_pool:
     name: workpool-basic
