@@ -18,7 +18,7 @@ pull:
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
 - name: github-bankapp
-  version: 1.0
+  version: "1.0"
   tags: []
   description: "bank application deployed through github"
   schedule: 
