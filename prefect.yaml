@@ -1,7 +1,3 @@
-# Welcome to your prefect.yaml file! You can use this file for storing and managing
-# configuration for deploying your flows. We recommend committing this file to source
-# control along with your flow code.
-
 # Generic metadata about this project
 name: github-deploy-yml
 prefect-version: 3.2.2
@@ -15,21 +11,24 @@ push: null
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
 - prefect.deployments.steps.git_clone:
-    repository: '{{ repository }}'
-    branch: '{{ branch }}'
-    access_token: null
+    repository: 'https://github.com/Rohan-S-29/prefect-app'
+    branch: 'main'
+    access_token: "{{ prefect.blocks.secret.github-token }}"
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: null
-  version: null
+- name: github-bankapp
+  version: 1.0
   tags: []
-  description: null
-  schedule: {}
-  flow_name: null
-  entrypoint: null
+  description: "bank application deployed through github"
+  schedule: 
+    cron: "*/5 * * * *"
+    timezone: "Asia/Kolkata"
+    active: true
+  flow_name: bankflow
+  entrypoint: bankflow/bankapp.py
   parameters: {}
   work_pool:
-    name: null
-    work_queue_name: null
+    name: workpool-basic
+    work_queue_name: default
     job_variables: {}
